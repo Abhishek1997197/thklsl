@@ -1,0 +1,1196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acadpia Intro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9ff;
+      overflow-x: hidden;
+    }
+    header {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #5e00c5;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    nav a, .dropdown-btn {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      padding: 10px;
+      z-index: 999;
+    }
+    .dropdown-content a {
+      display: block;
+      padding: 8px 12px;
+      color: #333;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .contact-btn {
+      background-color: #5e00c5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 40px;
+      position: relative;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      max-width: 50%;
+    }
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: #111;
+    }
+    .hero-text p {
+      font-size: 18px;
+      margin-top: 15px;
+      color: #555;
+    }
+    .hero-buttons {
+      margin-top: 25px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-buttons a {
+      padding: 12px 20px;
+      background-color: #5e00c5;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .hero-buttons a:hover {
+      background-color: #3a008f;
+    }
+
+    .hero-video {
+      width: 600px;
+      height: 360px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .hero-video iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .floating-icon {
+      position: absolute;
+      opacity: 0.08;
+      width: 80px;
+      z-index: 0;
+    }
+    .icon1 { top: 5%; left: 65%; }
+    .icon2 { bottom: 10%; right: 10%; }
+    .icon3 { top: 50%; left: 5%; }
+
+    .news-slider {
+      margin-top: 60px;
+      padding: 20px;
+      background: #f4f3ff;
+      overflow: hidden;
+      position: relative;
+    }
+    .news-container {
+      display: flex;
+      gap: 20px;
+      animation: scrollNews 20s linear infinite;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+    }
+    .news-card {
+      scroll-snap-align: start;
+      min-width: 250px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    .news-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .news-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    @keyframes scrollNews {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-top: 10px;
+      }
+      .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+      .hero-text {
+        max-width: 100%;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 32px;
+      }
+      .hero-video {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .news-container {
+        animation: scrollNews 20s linear infinite;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+      }
+      .news-card {
+        min-width: 220px;
+      }
+    }
+    .article-section {
+    padding: 60px 20px;
+    background: #f0f0fa;
+    text-align: center;
+  }
+  .article-section h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #222;
+  }
+  .article-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .article-card {
+    background: white;
+    border-radius: 20px;
+    width: 260px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: 0.3s ease;
+  }
+  .article-card:hover {
+    transform: translateY(-6px);
+  }
+  .article-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+  }
+  .article-image img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255,255,255,0.6);
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+  }
+  .article-card h3 {
+    font-size: 18px;
+    margin: 12px 16px 4px;
+    color: #111;
+  }
+  .article-card p {
+    font-size: 14px;
+    margin: 0 0 12px;
+    color: #666;
+  }
+  .read-more {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 6px 16px;
+    background-color: #5f2eea;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  .read-more:hover {
+    background-color: #4a1ec9;
+  }
+
+  @media (max-width: 768px) {
+    .article-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .mentor-section {
+    background-color: #d6e9ff; /* Soft Blue Background */
+    padding: 80px 20px;
+  }
+
+  .mentor-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  .mentor-image img {
+    width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+  .mentor-info {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+  }
+
+  .mentor-info h2 {
+    font-size: 34px;
+    margin-bottom: 20px;
+    color: #0a2540;
+  }
+
+  .mentor-box {
+    background: #fff;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .mentor-container {
+      flex-direction: column;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .mentor-image img {
+      width: 90%;
+    }
+
+    .mentor-info h2 {
+      font-size: 28px;
+    }
+  }
+  .subject-section {
+    background: #f0f7ff; /* Light blue-gray */
+    padding: 80px 20px;
+  }
+
+  .subject-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #0a2540;
+  }
+
+  .subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+  }
+
+  .subject-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .subject-card:hover {
+    background: #dceeff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+  }
+
+  .subject-card .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+
+  .subject-card h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #1b1b1b;
+  }
+
+  .subject-card p {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 28px;
+    }
+
+    .subject-card {
+      padding: 24px 16px;
+    }
+
+    .subject-card .icon {
+      font-size: 32px;
+    }
+  }
+  .mains-practice-section {
+    background: linear-gradient(to right, #321b4b, #4b1d74);
+    color: white;
+    padding: 60px 20px;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .mains-container {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .mains-container h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #ddd6f3;
+  }
+
+  .mains-item {
+    background: #000;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .question-header {
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .arrow {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  .mains-item.active .arrow {
+    transform: rotate(180deg);
+  }
+
+  .answer-box {
+    display: none;
+    padding: 20px 24px;
+    background: #111;
+  }
+
+  .answer-box textarea {
+    width: 100%;
+    min-height: 100px;
+    border-radius: 10px;
+    padding: 12px;
+    resize: vertical;
+    border: none;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .answer-box button {
+    background: #a56cff;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+
+  .answer-box button:hover {
+    background: #8333ee;
+  }
+
+  @media (max-width: 600px) {
+    .question-header {
+      font-size: 16px;
+    }
+
+    .answer-box textarea {
+      font-size: 14px;
+    }
+  }
+  .why-learn-fullwidth {
+    width: 100%;
+    background: #d6ebff; /* Soft blue */
+    padding: 80px 0;
+  }
+
+  .why-learn-inner {
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  .why-learn-fullwidth h2 {
+    font-size: 2.8rem;
+    color: #002855;
+    margin-bottom: 10px;
+  }
+
+  .why-learn-fullwidth .subtitle {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 50px;
+  }
+
+  .why-learn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .why-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+
+  .why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  .why-card .icon {
+    font-size: 2.6rem;
+    margin-bottom: 15px;
+    color: #004080;
+  }
+
+  .why-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #111;
+  }
+
+  .why-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .why-learn-fullwidth h2 {
+      font-size: 2rem;
+    }
+
+    .why-learn-fullwidth .subtitle {
+      font-size: 1rem;
+      margin-bottom: 30px;
+    }
+  }
+  .review-section {
+  background: #f5f8ff;
+  padding: 80px 20px;
+  width: 100%;
+}
+
+.review-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.review-container h2 {
+  font-size: 2.8rem;
+  color: #002244;
+  margin-bottom: 10px;
+}
+
+.review-container .subtitle {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+.review-slider {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
+}
+
+.review-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  min-width: 280px;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+.review-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.review-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #003366;
+}
+
+.profession {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.review-msg {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+.animated-paperwise {
+    background: #eef6ff;
+    padding: 80px 20px;
+    overflow: hidden;
+  }
+
+  .animated-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #003366;
+    font-weight: 800;
+    margin-bottom: 50px;
+  }
+
+  .animated-slider {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: slideIn 1s ease forwards;
+  }
+
+  .animated-card {
+    background: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 30px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(50px);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .animated-card:nth-child(1) { animation-delay: 0.2s; }
+  .animated-card:nth-child(2) { animation-delay: 0.4s; }
+  .animated-card:nth-child(3) { animation-delay: 0.6s; }
+  .animated-card:nth-child(4) { animation-delay: 0.8s; }
+
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    background: #007bff;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .animated-card:hover .icon-circle {
+    transform: scale(1.2);
+  }
+
+  .animated-card h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #003366;
+  }
+
+  @keyframes fadeUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .site-footer {
+    background: #002244;
+    color: white;
+    padding: 60px 20px 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .footer-about,
+  .footer-links,
+  .footer-contact {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .footer-about h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-links ul li {
+    margin: 8px 0;
+  }
+
+  .footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links ul li a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #334455;
+    margin-top: 40px;
+    font-size: 0.9rem;
+  }
+</style>
+</style>
+</style>
+</style>
+</style>
+</style>
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ACADPIA</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <div class="dropdown">
+      <span class="dropdown-btn">Study Material</span>
+      <div class="dropdown-content">
+        <a href="https://example.com/gandhi">Gandhi</a>
+        <a href="https://example.com/nehru">Nehru</a>
+        <a href="https://example.com/jinnah">Jinnah</a>
+        <a href="https://example.com/swami">Swami</a>
+      </div>
+    </div>
+    <a href="https://en.wikipedia.org/wiki/Nationalism#Anti-colonial" target="_blank">Monthly PDF</a>
+    <a href="https://en.wikipedia.org/wiki/Decolonization" target="_blank">About Us</a>
+    <a class="contact-btn" href="https://en.wikipedia.org/wiki/Colonialism" target="_blank">Contact Us</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Perfect your journey with practice</h1>
+    <p>simply dummy text of the printing typesetting industry. Lorem Ipsum has been</p>
+    <div class="hero-buttons">
+      <a href="#">Daily Quiz</a>
+      <a href="https://en.wikipedia.org/wiki/Imperialism" target="_blank">Free Test Series</a>
+    </div>
+  </div>
+  <div class="hero-video">
+    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+  </div>
+  <img class="floating-icon icon1" src="https://cdn-icons-png.flaticon.com/512/3235/3235237.png" alt="icon1" />
+  <img class="floating-icon icon2" src="https://cdn-icons-png.flaticon.com/512/609/609803.png" alt="icon2" />
+  <img class="floating-icon icon3" src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="icon3" />
+</section>
+
+<section class="news-slider">
+  <div class="news-container">
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">Gandhi was killed</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">Nehru drank</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">Jinnah left</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">America lost</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">Twin tower rebuild</div></div>
+    <div class="news-card"><img src="https://www.shutterstock.com/shutterstock/photos/2198245029/display_1500/stock-photo-autumn-nature-landscape-lake-bridge-in-fall-forest-path-way-in-gold-woods-romantic-view-image-2198245029.jpg" alt="news" /><div class="news-title">India is great</div></div>
+  </div>
+</section>
+<section class="article-section">
+  <h2>Articles</h2>
+  <div class="article-container">
+    <div class="article-card">
+      <div class="article-image">
+        <span class="tag">History</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Colonialism_in_1945_updated_legend.png/960px-Colonialism_in_1945_updated_legend.png" alt="Article 1">
+      </div>
+      <h3>Gandhi is dead</h3>
+      <p>12 June 2025</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/Mahatma_Gandhi" target="_blank">Read More</a>
+    </div>
+    <div class="article-card">
+      <div class="article-image">
+        <span class="tag">Economy</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Colonialism_in_1945_updated_legend.png/960px-Colonialism_in_1945_updated_legend.png" alt="Article 2">
+      </div>
+      <h3>India Inflation</h3>
+      <p>11 June 2025</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/Inflation_in_India" target="_blank">Read More</a>
+    </div>
+    <div class="article-card">
+      <div class="article-image">
+        <span class="tag">Science</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Colonialism_in_1945_updated_legend.png/960px-Colonialism_in_1945_updated_legend.png" alt="Article 3">
+      </div>
+      <h3>Earth is round</h3>
+      <p>10 June 2025</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/Earth" target="_blank">Read More</a>
+    </div>
+    <div class="article-card">
+      <div class="article-image">
+        <span class="tag">Chemistry</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Colonialism_in_1945_updated_legend.png/960px-Colonialism_in_1945_updated_legend.png" alt="Article 4">
+      </div>
+      <h3>Bio hazard</h3>
+      <p>9 June 2025</p>
+      <a class="read-more" href="https://en.wikipedia.org/wiki/Biohazard" target="_blank">Read More</a>
+    </div>
+  </div>
+  <section class="mentor-section">
+    <div class="mentor-container">
+      <div class="mentor-image">
+        <img src="https://d502jbuhuh9wk.cloudfront.net/orgData/65ef296c2ffd696226285f37/pages/assets/images/BsWG6whatsappimage20240325at11.06.33am.jpg" alt="Mentor Image">
+      </div>
+      <div class="mentor-info">
+        <h2>Meet Your Mentor</h2>
+        <div class="mentor-box">
+          <p>
+            Meet <strong>Lakshay Pandey</strong>, an esteemed <strong>Assistant Commissioner of Police (ACP)</strong> and a distinguished educator.
+            Having achieved remarkable success in the <strong>UPSC Civil Services Examination of 2018</strong>,
+            Lakshay brings a wealth of practical experience and expertise to his teaching endeavors.
+            With a commitment to justice and a passion for education,
+            Lakshay inspires and empowers students to excel in <strong>Govt Jobs / UPSC Exam</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <section class="subject-section">
+      <div class="subject-container">
+        <h2 class="section-title">Explore Subjects</h2>
+        <div class="subject-grid">
+          <!-- Subject Card -->
+          <div class="subject-card">
+            <div class="icon">📜</div>
+            <h3>History</h3>
+            <p>Test your knowledge</p>
+          </div>
+          <div class="subject-card">
+            <div class="icon">🗺️</div>
+            <h3>Geography</h3>
+            <p>Test your knowledge</p>
+          </div>
+          <div class="subject-card">
+            <div class="icon">🏛️</div>
+            <h3>Polity</h3>
+            <p>Test your knowledge</p>
+          </div>
+          <div class="subject-card">
+            <div class="icon">💰</div>
+            <h3>Economics</h3>
+            <p>Test your knowledge</p>
+          </div>
+          <div class="subject-card">
+            <div class="icon">⚛️</div>
+            <h3>Physics</h3>
+            <p>Test your knowledge</p>
+          </div>
+          <div class="subject-card">
+            <div class="icon">🧪</div>
+            <h3>Chemistry</h3>
+            <p>Test your knowledge</p>
+          </div>
+          <div class="subject-card">
+            <div class="icon">🧬</div>
+            <h3>Biology</h3>
+            <p>Test your knowledge</p>
+          </div>
+          <div class="subject-card">
+            <div class="icon">🎨</div>
+            <h3>Art & Culture</h3>
+            <p>Test your knowledge</p>
+          </div>
+        </div>
+      </div>
+
+      <section class="mains-practice-section">
+        <div class="mains-container">
+          <h2>Let's Practice for Mains</h2>
+           <!-- Practice Item -->
+          <div class="mains-item">
+            <div class="question-header">
+              <span>1. What is the significance of Directive Principles of State Policy?</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="answer-box">
+              <textarea placeholder="Write your answer here..."></textarea>
+              <button type="button">Submit Answer</button>
+            </div>
+          </div>
+      
+          <div class="mains-item">
+            <div class="question-header">
+              <span>2. Discuss the effects of globalization on Indian agriculture.</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="answer-box">
+              <textarea placeholder="Write your answer here..."></textarea>
+              <button type="button">Submit Answer</button>
+            </div>
+          </div>
+      
+          <div class="mains-item">
+            <div class="question-header">
+              <span>3. What are pressure groups? How do they influence government policies?</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="answer-box">
+              <textarea placeholder="Write your answer here..."></textarea>
+              <button type="button">Submit Answer</button>
+            </div>
+          </div>
+      
+          <div class="mains-item">
+            <div class="question-header">
+              <span>4. Explain the importance of the Preamble to the Indian Constitution.</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="answer-box">
+              <textarea placeholder="Write your answer here..."></textarea>
+              <button type="button">Submit Answer</button>
+            </div>
+          </div>
+      
+          <div class="mains-item">
+            <div class="question-header">
+              <span>5. What are the major challenges of urbanization in India?</span>
+              <span class="arrow">▼</span>
+            </div>
+            <div class="answer-box">
+              <textarea placeholder="Write your answer here..."></textarea>
+              <button type="button">Submit Answer</button>
+          </div>
+        </div>
+        <section class="why-learn-fullwidth">
+          <div class="why-learn-inner">
+            <h2>Why Learn with Us</h2>
+            <p class="subtitle">Achieving academic excellence with our academic support</p>
+        
+            <div class="why-learn-grid">
+              <!-- Card 1 -->
+              <div class="why-card">
+                <div class="icon">📘</div>
+                <h3>Comprehensive Courses</h3>
+                <p>Explore a wide range of courses tailored to your interests and goals.</p>
+              </div>
+        
+              <!-- Card 2 -->
+              <div class="why-card">
+                <div class="icon">🧠</div>
+                <h3>Interactive Learning Experience</h3>
+                <p>Engage in interactive lessons, discussions, and activities that foster a dynamic and immersive learning environment.</p>
+              </div>
+        
+              <!-- Card 3 -->
+              <div class="why-card">
+                <div class="icon">🛠️</div>
+                <h3>Practical Skills Application</h3>
+                <p>Gain practical skills and knowledge that can be directly applied in real-world scenarios, enhancing your professional growth.</p>
+              </div>
+        
+              <!-- Card 4 -->
+              <div class="why-card">
+                <div class="icon">🤝</div>
+                <h3>Supportive Community</h3>
+                <p>Join a vibrant community of learners, collaborate with peers, and receive guidance from instructors throughout your learning journey.</p>
+              </div>
+        
+              <!-- Card 5 -->
+              <div class="why-card">
+                <div class="icon">💸</div>
+                <h3>Affordable Fees</h3>
+                <p>Enhance your creative potential without breaking the bank. Our course offers top-notch education at a price that won't burden your wallet.</p>
+              </div>
+        
+              <!-- Card 6 -->
+              <div class="why-card">
+                <div class="icon">📅</div>
+                <h3>Flexible Learning Options</h3>
+                <p>Access course materials anytime, anywhere and learn at your own pace to fit your busy schedule.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="review-section">
+          <div class="review-container">
+            <h2>What Our Students Say</h2>
+            <p class="subtitle">Trusted by thousands of learners</p>
+        
+            <div class="review-slider">
+              <!-- Review Card 1 -->
+              <div class="review-card">
+                <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="User" class="review-img">
+                <h3>Rahul Sharma</h3>
+                <p class="profession">UPSC Aspirant</p>
+                <p class="review-msg">This platform helped me clear concepts I was stuck on for months. The mentorship is top-notch!</p>
+              </div>
+        
+              <!-- Review Card 2 -->
+              <div class="review-card">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="review-img">
+                <h3>Priya Mehra</h3>
+                <p class="profession">SSC Candidate</p>
+                <p class="review-msg">I found the free test series extremely helpful. The interface is clean and easy to use.</p>
+              </div>
+        
+              <!-- Review Card 3 -->
+              <div class="review-card">
+                <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="User" class="review-img">
+                <h3>Arjun Verma</h3>
+                <p class="profession">Banking Exam Prep</p>
+                <p class="review-msg">Mock tests feel exactly like real exams. Highly recommended to all serious candidates.</p>
+              </div>
+            </div>
+            <section class="animated-paperwise">
+  <div class="container">
+    <h2 class="animated-title">Explore Test Series by Subject</h2>
+    <div class="animated-slider">
+
+      <!-- Test Series Card -->
+      <div class="animated-card">
+        <div class="icon-circle">
+          <i class="fas fa-university"></i>
+        </div>
+        <h3>UPSC</h3>
+      </div>
+
+      <div class="animated-card">
+        <div class="icon-circle">
+          <i class="fas fa-landmark"></i>
+        </div>
+        <h3>PCS</h3>
+      </div>
+
+      <div class="animated-card">
+        <div class="icon-circle">
+          <i class="fas fa-piggy-bank"></i>
+        </div>
+        <h3>Banking</h3>
+      </div>
+
+      <div class="animated-card">
+        <div class="icon-circle">
+          <i class="fas fa-subway"></i>
+        </div>
+        <h3>Railways</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>Acadpia</h3>
+      <p>Your trusted platform for UPSC, PCS, Banking, and Railway preparation. Empowering learners through quality content and interactive resources.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Term and condition</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact Info</h4>
+      <p>Email: support@acadpia.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>Location: Delhi, India</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Acadpia. All rights reserved.</p>
+  </div>
+</footer>
+          </div>
+        </section>
+      </section>
+    </section>
+  </section>
+</section>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll('.mains-item');
+
+    items.forEach(item => {
+      const header = item.querySelector('.question-header');
+      const box = item.querySelector('.answer-box');
+
+      header.addEventListener('click', () => {
+        // Collapse all others
+        items.forEach(i => {
+          if (i !== item) {
+            i.classList.remove('active');
+            i.querySelector('.answer-box').style.display = 'none';
+          }
+        });
+
+        // Toggle current
+        const isVisible = box.style.display === 'block';
+        box.style.display = isVisible ? 'none' : 'block';
+        item.classList.toggle('active', !isVisible);
+      });
+    });
+  });
+</script>
+</body>
+</html>
